@@ -10,7 +10,7 @@ license: mit
 
 ===== Application Startup at 2023-11-27 16:14:42 =====
 
-loading model {MODEL_ID}...
+loading model OpenCLIP-ViT-B-32-laion2B...
 open_clip_pytorch_model.bin:   0%|          | 0.00/605M [00:00<?, ?B/s]
 open_clip_pytorch_model.bin:   3%|▎         | 21.0M/605M [00:00<00:02, 207MB/s]
 open_clip_pytorch_model.bin:   7%|▋         | 41.9M/605M [00:00<00:06, 85.9MB/s]
