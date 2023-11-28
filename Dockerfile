@@ -1,6 +1,14 @@
-# containerized api to get embeddings from OpenCLIP
-# when the app starts, the model binaries will be be downloaded from huggingface.co
-# it's hightly recommended to mount a persisted volume on
+# Containerized api to get embeddings from OpenCLIP
+# When the application starts up, it needs to download a model from huggingface.co, which will take some time.
+# The total time the application start takes depends on your network connection.
+# It's hightly recommended to mount a persisted volume on user's '.cache' folder 
+#
+# BUILD the image: 
+# docker build . --tag openclip-api:0.0.1 --tag openclip-api:latest
+# RUN the container:
+# docker run -d -p 7860:7860 --name openclip-api openclip-api:latest
+#
+# The container is compatible with huggingface.co Spaces
 # read the doc: https://huggingface.co/docs/hub/spaces-sdks-docker
 # you will also find guides on how best to write your Dockerfile
 
@@ -21,6 +29,8 @@ ENV HOME=/home/user \
 WORKDIR $HOME/app
 
 COPY --chown=user . $HOME/app
+
+RUN mkdir /home/user/.cache
 
 EXPOSE 7860
 

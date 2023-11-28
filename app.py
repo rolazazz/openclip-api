@@ -43,6 +43,7 @@ class InferlessPythonModel:
 
 		return {	
 			"model": MODEL_ID,
+			"device": self.device.type,
 			# "inputs" : inputs,
 			"embeddings": text_features + image_features,
 			"duration": time.perf_counter() - start_time
