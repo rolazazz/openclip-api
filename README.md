@@ -52,6 +52,8 @@ $ curl --location --request POST 'http://localhost:7860/embeddings' \
 
 Make sure, you can access and use Python.
 
+## How to
+
 ### Setup Python Virtual Evironment (.venv)
 We must set up a Python environment to use scripts for the api.
 A virtual environment, a self-contained directory tree that contains a Python installation for a particular version of Python, plus a number of additional packages. 
