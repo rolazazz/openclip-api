@@ -35,7 +35,7 @@ stages:
         regionName: 'eu-south-1'
         sourceImageName: '$(Build.Repository.Name)'
         sourceImageTag: '$(Build.BuildNumber)'
-        repositoryName: 'archiproducts.ai'
+        repositoryName: '$(Build.Repository.Name)'
         pushTag: '$(Build.BuildNumber)'
         autoCreateRepository: true
         removeDockerImage: true
