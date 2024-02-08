@@ -1,0 +1,41 @@
+# Docker
+# Build a Docker image
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+- main
+
+resources:
+- repo: self
+
+variables:
+  tag: '$(Build.BuildNumber)'
+
+stages:
+- stage: Build
+  displayName: Build image
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      name: k8sBuild
+    steps:
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+        command: build
+        dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+        repository: 'archiproducts.ai'
+        tags: |
+          $(tag)
+    - task: ECRPushImage@1
+      displayName: 'Push on ECR'
+      inputs:
+        awsCredentials: 'aws_registry'
+        regionName: 'eu-south-1'
+        sourceImageName: '$(Build.Repository.Name)'
+        sourceImageTag: '$(Build.BuildNumber)'
+        repositoryName: 'archiproducts.ai'
+        pushTag: '$(Build.BuildNumber)'
+        autoCreateRepository: true
+        removeDockerImage: true
