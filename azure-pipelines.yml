@@ -25,7 +25,7 @@ stages:
       inputs:
         command: build
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-        repository: 'archiproducts.ai'
+        repository: '$(Build.Repository.Name)'
         tags: |
           $(tag)
     - task: ECRPushImage@1
