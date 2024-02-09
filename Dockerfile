@@ -4,8 +4,9 @@
 # It's hightly recommended to mount a persisted volume on user's '.cache' folder 
 #
 # BUILD the image: 
-# docker build . --tag openclip-api:0.0.1 --tag openclip-api:latest --tag robertolazazzera/openclip-api:latest
+# docker build . --tag openclip-api:0.1.0 --tag openclip-api:latest --tag robertolazazzera/openclip-api:latest --tag robertolazazzera/openclip-api:0.1.0
 # PUSH to registy
+# docker push robertolazazzera/openclip-api:0.1.0
 # docker push robertolazazzera/openclip-api:latest
 # RUN the container:
 # docker run -d -p 7860:7860 --name openclip-api openclip-api:latest
