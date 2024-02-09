@@ -14,7 +14,8 @@
 # read the doc: https://huggingface.co/docs/hub/spaces-sdks-docker
 # you will also find guides on how best to write your Dockerfile
 
-FROM python:3.11-slim
+# FROM python:3.11-slim
+FROM bitnami/pytorch:latest
 
 WORKDIR /code
 
@@ -22,6 +23,8 @@ COPY ./requirements.txt /code/requirements.txt
 
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
+# required for bitnami
+USER root 
 # the part below makes the container compatible with huggingface.com
 RUN useradd -m -u 1000 user
 USER user
