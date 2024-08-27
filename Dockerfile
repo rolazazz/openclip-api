@@ -1,12 +1,12 @@
-# Containerized api to get embeddings from OpenCLIP
+# Containerized api to get embeddings from OpenCLIP or E5 models
 # When the application starts up, it needs to download a model from huggingface.co, which will take some time.
 # The total time the application start takes depends on your network connection.
 # It's hightly recommended to mount a persisted volume on user's '.cache' folder 
 #
 # BUILD the image: 
-# docker build . --tag openclip-api:0.1.0 --tag openclip-api:latest --tag robertolazazzera/openclip-api:latest --tag robertolazazzera/openclip-api:0.1.0
+# docker build . --tag openclip-api:0.2.0 --tag openclip-api:latest --tag robertolazazzera/openclip-api:latest --tag robertolazazzera/openclip-api:0.2.0
 # PUSH to registy
-# docker push robertolazazzera/openclip-api:0.1.0
+# docker push robertolazazzera/openclip-api:0.2.0
 # docker push robertolazazzera/openclip-api:latest
 # RUN the container:
 # docker run -d -p 7860:7860 --name openclip-api openclip-api:latest

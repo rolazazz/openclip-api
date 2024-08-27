@@ -3,13 +3,15 @@ from fastapi import Depends, FastAPI, Request, UploadFile
 from fastapi.responses import  JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
-from app import InferlessPythonModel
+from app import ClipInferlessPythonModel, E5InferlessPythonModel
 
 
 
 
-app = InferlessPythonModel()
-app.initialize()
+clipApp = ClipInferlessPythonModel()
+clipApp.initialize()
+e5App = E5InferlessPythonModel()
+e5App.initialize()
 
 api = FastAPI()
 
@@ -581,7 +583,7 @@ def read_root():
 	return {"message": "archiproducts.ai!"}
 
 
-@api.post("/embeddings", response_model=Output)
+@api.post("/clip-embed", response_model=Output)
 def get_embeddings(inputs:Inputs, request: Request):
 	"""
     Get embeddings vector form input text or image.
@@ -590,8 +592,18 @@ def get_embeddings(inputs:Inputs, request: Request):
     Returns:
         dict: result containing the embeddings.
     """
-	return app.infer(inputs.__dict__)
+	return clipApp.infer(inputs.__dict__)
 	
+@api.post("/e5-embed", response_model=Output)
+def get_embeddings(inputs:Inputs, request: Request):
+	"""
+    Get embeddings vector form input text or image.
+    Args:
+        input_data (Inputs): Oggetto contain text.
+    Returns:
+        dict: result containing the embeddings.
+    """
+	return e5App.infer(inputs.__dict__)
 
 if __name__ == "__main__":
 	uvicorn.run(api, host='127.0.0.1', port=7860)
