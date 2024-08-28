@@ -62,9 +62,10 @@ class E5InferlessPythonModel:
 
 	def initialize(self):
 		self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+		print(f"loading model {E5_MODEL_NAME}...")
 		# self.tokenizer = AutoTokenizer.from_pretrained('intfloat/multilingual-e5-large')
 		# self.model = AutoModel.from_pretrained('intfloat/multilingual-e5-large').to("cuda")
-		self.st = SentenceTransformer('intfloat/multilingual-e5-large', device=self.device, cache_folder=CACHE_DIR)
+		self.st = SentenceTransformer(E5_MODEL_NAME, device=self.device, cache_folder=CACHE_DIR)
 
 
 	# def mean_pooling(self, model_output, attention_mask):
